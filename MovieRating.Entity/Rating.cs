@@ -6,9 +6,9 @@ namespace MovieRating.Entity
     //{Reviewer:563, Movie:781196, Grade:2, Date:'2003-06-06'}
     public class Rating
     {
-        public int ReviewerID { get; set; }
+        public int Reviewer { get; set; }
 
-        public int MovieID { get; set; }
+        public int Movie { get; set; }
 
         public int Grade { get; set; }
 
@@ -16,10 +16,14 @@ namespace MovieRating.Entity
 
         public Rating(int reviewerId, int movieId, int grade, DateTime date)
         {
-            ReviewerID = reviewerId;
-            MovieID = movieId;
+            Reviewer = reviewerId;
+            Movie = movieId;
             Grade = grade;
             Date = date;
+        }
+
+        public Rating()
+        {
         }
     }
 }

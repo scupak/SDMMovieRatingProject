@@ -25,5 +25,10 @@ namespace MovieRating.Entity
         public Rating()
         {
         }
+
+        public override string ToString()
+        {
+            return $"{nameof(Reviewer)}: {Reviewer}, {nameof(Movie)}: {Movie}, {nameof(Grade)}: {Grade}, {nameof(Date)}: {Date}";
+        }
     }
 }

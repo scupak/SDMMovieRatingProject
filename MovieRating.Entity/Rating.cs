@@ -13,5 +13,13 @@ namespace MovieRating.Entity
         public int Grade { get; set; }
 
         public DateTime Date { get; set; }
+
+        public Rating(int reviewerId, int movieId, int grade, DateTime date)
+        {
+            ReviewerID = reviewerId;
+            MovieID = movieId;
+            Grade = grade;
+            Date = date;
+        }
     }
 }

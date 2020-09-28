@@ -8,8 +8,14 @@ namespace MovieRating.Core.ApplicationService.Impl
 {
   public class MovieRatingService : IMovieRatingService
   {
-      public IRepository<Rating> RatingRepo { get; set; } 
-        public int GetNumberOfReviewsFromReviewer(int reviewer)
+      public IRepository<Rating> RatingRepo { get; set; }
+
+      public MovieRatingService(IRepository<Rating> ratingRepo)
+      {
+          RatingRepo = ratingRepo ?? throw new ArgumentException("Missing RatingRepo");
+      }
+
+      public int GetNumberOfReviewsFromReviewer(int reviewer)
         {
             throw new NotImplementedException();
         }

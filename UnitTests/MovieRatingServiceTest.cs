@@ -27,7 +27,7 @@ namespace UnitTests
             repoMock = new Mock<IRepository<Rating>>();
             repoMock.SetupAllProperties();
 
-            repoMock.Setup(x => x.GetAll()).Returns(dataStore);
+            repoMock.Setup(x => x.GetAll()).Returns(() => dataStore);
         }
 
         //tests if the setup class works
@@ -65,7 +65,21 @@ namespace UnitTests
             //arrange
             IRepository<Rating> repo = repoMock.Object;
             MovieRatingService mrs = new MovieRatingService(repo);
-            GenericSetup();
+
+            dataStore = new List<Rating>
+            {
+                new Rating(1,1,2,new DateTime(2003,6,6)),
+                new Rating(1, 3, 3, new DateTime(2005,9,6)),
+                new Rating(1, 4, 4, new DateTime(2004,12,23)),
+                new Rating(1, 6, 2, new DateTime(2005,1,23)),
+                new Rating(3, 5, 2, new DateTime(2005,2,23)),
+                new Rating(4, 5, 2, new DateTime(2005,3,23)),
+                new Rating(5, 5, 2, new DateTime(2005,4,23)),
+                new Rating(6, 5, 2, new DateTime(2005,5,23)),
+                new Rating(2,2,3,new DateTime(2002,1,22)),
+                new Rating(2,3,4,new DateTime(2001,12,1))
+
+            };
 
             //act
             int NumberOfReviews = mrs.GetNumberOfReviewsFromReviewer(reviewerid);
@@ -73,30 +87,101 @@ namespace UnitTests
             //assert
             Assert.Equal(expected, NumberOfReviews);
 
-
+            repoMock.Verify(rep => rep.GetAll(), Times.Once);
         }
 
         // 2. On input N, what is the average rate that reviewer N had given?
         [Theory]
-        [InlineData(1)]
-        public void GetAverageRateFromReviewer(int reviewer)
+        [InlineData(1,2.75)]
+        public void GetAverageRateFromReviewer(int reviewer, double expected)
         {
+            //arrange
+            IRepository<Rating> repo = repoMock.Object;
+            MovieRatingService mrs = new MovieRatingService(repo);
+
+            dataStore = new List<Rating>
+            {
+                new Rating(1,1,2,new DateTime(2003,6,6)),
+                new Rating(1, 3, 3, new DateTime(2005,9,6)),
+                new Rating(1, 4, 4, new DateTime(2004,12,23)),
+                new Rating(1, 6, 2, new DateTime(2005,1,23)),
+                new Rating(3, 5, 2, new DateTime(2005,2,23)),
+                new Rating(4, 5, 2, new DateTime(2005,3,23)),
+                new Rating(5, 5, 2, new DateTime(2005,4,23)),
+                new Rating(6, 5, 2, new DateTime(2005,5,23)),
+                new Rating(2,2,3,new DateTime(2002,1,22)),
+                new Rating(2,3,4,new DateTime(2001,12,1))
+
+            };
+
+            //act
+            double averageRateFromReviewer = mrs.GetAverageRateFromReviewer(reviewer);
+
+            //assert
+            Assert.True(Math.Abs(expected - averageRateFromReviewer) < 0);
+
+            repoMock.Verify(rep => rep.GetAll(),Times.Once);
+
 
         }
 
         // 3. On input N and R, how many times has reviewer N given rate R?
         [Theory]
-        [InlineData(1,1)]
-        public void GetNumberOfRatesByReviewer(int reviewer, int rate)
+        [InlineData(1,2,2)]
+        public void GetNumberOfRatesByReviewer(int reviewer, int rate,int expected)
         {
+            //arrange
+            IRepository<Rating> repo = repoMock.Object;
+            MovieRatingService mrs = new MovieRatingService(repo);
+            dataStore = new List<Rating>
+            {
+                new Rating(1,1,2,new DateTime(2003,6,6)),
+                new Rating(1, 3, 3, new DateTime(2005,9,6)),
+                new Rating(1, 4, 4, new DateTime(2004,12,23)),
+                new Rating(1, 6, 2, new DateTime(2005,1,23)),
+                new Rating(3, 5, 2, new DateTime(2005,2,23)),
+                new Rating(4, 5, 2, new DateTime(2005,3,23)),
+                new Rating(5, 5, 2, new DateTime(2005,4,23)),
+                new Rating(6, 5, 2, new DateTime(2005,5,23)),
+                new Rating(2,2,3,new DateTime(2002,1,22)),
+                new Rating(2,3,4,new DateTime(2001,12,1))
+
+            };
+
+
+            //act
+            int numberOfRatesByReviewer = mrs.GetNumberOfRatesByReviewer(reviewer,rate);
+
+
+            //assert 
+            Assert.Equal(expected,numberOfRatesByReviewer);
+
 
         }
 
         // 4. On input N, how many have reviewed movie N?
         [Theory]
-        [InlineData(1)]
-        public void GetNumberOfReviews(int movie)
+        [InlineData(1,1)]
+        public void GetNumberOfReviews(int movie, int expected)
         {
+
+            //arrange
+            IRepository<Rating> repo = repoMock.Object;
+            MovieRatingService mrs = new MovieRatingService(repo);
+            dataStore = new List<Rating>
+            {
+                new Rating(1,1,2,new DateTime(2003,6,6)),
+                new Rating(1, 3, 3, new DateTime(2005,9,6)),
+                new Rating(1, 4, 4, new DateTime(2004,12,23)),
+                new Rating(1, 6, 2, new DateTime(2005,1,23)),
+                new Rating(3, 5, 2, new DateTime(2005,2,23)),
+                new Rating(4, 5, 2, new DateTime(2005,3,23)),
+                new Rating(5, 5, 2, new DateTime(2005,4,23)),
+                new Rating(6, 5, 2, new DateTime(2005,5,23)),
+                new Rating(2,2,3,new DateTime(2002,1,22)),
+                new Rating(2,3,4,new DateTime(2001,12,1))
+
+            };
 
         }
 
@@ -155,16 +240,15 @@ namespace UnitTests
             dataStore = new List<Rating>
             {
                 new Rating(1,1,2,new DateTime(2003,6,6)),
-                new Rating(2,2,3,new DateTime(2002,1,22)),
-                new Rating(2,2,4,new DateTime(2001,12,1)),
                 new Rating(1, 3, 3, new DateTime(2005,9,6)),
                 new Rating(1, 4, 4, new DateTime(2004,12,23)),
                 new Rating(1, 4, 2, new DateTime(2005,1,23)),
                 new Rating(3, 5, 2, new DateTime(2005,2,23)),
                 new Rating(4, 5, 2, new DateTime(2005,3,23)),
                 new Rating(5, 5, 2, new DateTime(2005,4,23)),
-                new Rating(6, 5, 2, new DateTime(2005,5,23))
-
+                new Rating(6, 5, 2, new DateTime(2005,5,23)),
+                new Rating(2,2,3,new DateTime(2002,1,22)),
+                new Rating(2,2,4,new DateTime(2001,12,1))
 
             };
             

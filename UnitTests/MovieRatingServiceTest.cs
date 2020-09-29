@@ -183,21 +183,75 @@ namespace UnitTests
 
             };
 
+            //act 
+            int NumberOfReviews = mrs.GetNumberOfReviews(movie);
+
+
+            //assert 
+            Assert.Equal(expected, NumberOfReviews);
+
+
         }
 
         // 5. On input N, what is the average rate the movie N had received?
         [Theory]
-        [InlineData(1)]
-        public void GetAverageRateOfMovie(int movie)
+        [InlineData(1,2.5)]
+        public void GetAverageRateOfMovie(int movie, double expected)
         {
+            //arrange
+            IRepository<Rating> repo = repoMock.Object;
+            MovieRatingService mrs = new MovieRatingService(repo);
+            dataStore = new List<Rating>
+            {
+                new Rating(1, 1, 2, new DateTime(2003, 6, 6)),
+                new Rating(1, 3, 3, new DateTime(2005, 9, 6)),
+                new Rating(1, 4, 4, new DateTime(2004, 12, 23)),
+                new Rating(1, 6, 2, new DateTime(2005, 1, 23)),
+                new Rating(3, 5, 2, new DateTime(2005, 2, 23)),
+                new Rating(4, 5, 2, new DateTime(2005, 3, 23)),
+                new Rating(5, 5, 3, new DateTime(2005, 4, 23)),
+                new Rating(6, 5, 3, new DateTime(2005, 5, 23)),
+                new Rating(2, 2, 3, new DateTime(2002, 1, 22)),
+                new Rating(2, 3, 4, new DateTime(2001, 12, 1))
+            };
+
+
+            //act 
+                double AverageRateOfMovie = mrs.GetAverageRateFromReviewer(movie);
+
+                Assert.Equal(expected, AverageRateOfMovie);
+
+
+        
         }
 
         // 6. On input N and R, how many times had movie N received rate R?
         [Theory]
-        [InlineData(1,1)]
-        public void GetNumberOfRates(int movie, int rate)
+        [InlineData(1,1,1)]
+        public void GetNumberOfRates(int movie, int rate, int expected)
         {
+            //arrange
+            IRepository<Rating> repo = repoMock.Object;
+            MovieRatingService mrs = new MovieRatingService(repo);
+            dataStore = new List<Rating>
+            {
+                new Rating(1, 1, 2, new DateTime(2003, 6, 6)),
+                new Rating(1, 3, 3, new DateTime(2005, 9, 6)),
+                new Rating(1, 4, 4, new DateTime(2004, 12, 23)),
+                new Rating(1, 6, 2, new DateTime(2005, 1, 23)),
+                new Rating(3, 5, 2, new DateTime(2005, 2, 23)),
+                new Rating(4, 5, 2, new DateTime(2005, 3, 23)),
+                new Rating(5, 5, 3, new DateTime(2005, 4, 23)),
+                new Rating(6, 5, 3, new DateTime(2005, 5, 23)),
+                new Rating(2, 2, 3, new DateTime(2002, 1, 22)),
+                new Rating(2, 3, 4, new DateTime(2001, 12, 1))
+            };
 
+
+            //act 
+            int NumberOfRates = mrs.GetNumberOfRates(movie,rate);
+
+            Assert.Equal(expected, NumberOfRates);
         }
 
         // 7. What is the id(s) of the movie(s) with the highest number of top rates (5)?

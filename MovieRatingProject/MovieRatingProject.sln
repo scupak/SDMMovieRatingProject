@@ -7,11 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F7957A92-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfraStructure", "InfraStructure", "{5A557CD9-9752-42DD-8A8A-CBA64A096798}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieRating.Core", "..\MovieRating.Core\MovieRating.Core.csproj", "{77F59AF1-8448-4474-AA15-0E45F01C56BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRating.Core", "..\MovieRating.Core\MovieRating.Core.csproj", "{77F59AF1-8448-4474-AA15-0E45F01C56BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "..\UnitTests\UnitTests.csproj", "{1465A6FD-C381-4EAE-B046-FE1F19889E30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "..\UnitTests\UnitTests.csproj", "{1465A6FD-C381-4EAE-B046-FE1F19889E30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieRating.Entity", "..\MovieRating.Entity\MovieRating.Entity.csproj", "{126A0163-E64D-473E-99F9-1F4FA1F2754A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRating.Entity", "..\MovieRating.Entity\MovieRating.Entity.csproj", "{126A0163-E64D-473E-99F9-1F4FA1F2754A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonReaderProject", "JsonReaderProject\JsonReaderProject.csproj", "{2D176053-E2F7-43FF-BAC7-54DCC93E7FAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProjectPerformance", "UnitTestProjectPerformance\UnitTestProjectPerformance.csproj", "{95434F61-011B-4AF1-8818-C7A4A78AFF68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,14 @@ Global
 		{126A0163-E64D-473E-99F9-1F4FA1F2754A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{126A0163-E64D-473E-99F9-1F4FA1F2754A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{126A0163-E64D-473E-99F9-1F4FA1F2754A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D176053-E2F7-43FF-BAC7-54DCC93E7FAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D176053-E2F7-43FF-BAC7-54DCC93E7FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D176053-E2F7-43FF-BAC7-54DCC93E7FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D176053-E2F7-43FF-BAC7-54DCC93E7FAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95434F61-011B-4AF1-8818-C7A4A78AFF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95434F61-011B-4AF1-8818-C7A4A78AFF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95434F61-011B-4AF1-8818-C7A4A78AFF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95434F61-011B-4AF1-8818-C7A4A78AFF68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +51,7 @@ Global
 		{77F59AF1-8448-4474-AA15-0E45F01C56BE} = {F7957A92-0C8C-45FA-8B22-634557B83CA5}
 		{1465A6FD-C381-4EAE-B046-FE1F19889E30} = {5A557CD9-9752-42DD-8A8A-CBA64A096798}
 		{126A0163-E64D-473E-99F9-1F4FA1F2754A} = {F7957A92-0C8C-45FA-8B22-634557B83CA5}
+		{2D176053-E2F7-43FF-BAC7-54DCC93E7FAA} = {5A557CD9-9752-42DD-8A8A-CBA64A096798}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A4CA4F0-3885-4430-9FD4-A384158B5B5C}

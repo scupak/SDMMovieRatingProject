@@ -4,6 +4,7 @@ using MovieRating.Core.ApplicationService.Impl;
 using MovieRating.Core.DomainService;
 using MovieRating.Entity;
 using System;
+using System.Collections.Generic;
 
 namespace UnitTestProjectPerformance
 {
@@ -120,10 +121,19 @@ namespace UnitTestProjectPerformance
 
         }
 
-        /*
+        // 7. What is the id(s) of the movie(s) with the highest number of top rates (5)?
+        [TestMethod]
+        [Timeout(4000)]
+        public void GetMoviesWithHighestNumberOfTopRatesTest()
+        {
+            MovieRatingService movieRatingService = new MovieRatingService(repo);
+            IEnumerable<int> result = movieRatingService.GetMoviesWithHighestNumberOfTopRates();
+            //Console.WriteLine(result);
 
-        // 6. On input N and R, how many times had movie N received rate R?
-        int GetNumberOfRates(int movie, int rate);
+        }
+
+
+        /*
 
         // 7. What is the id(s) of the movie(s) with the highest number of top rates (5)?
         List<int> GetMoviesWithHighestNumberOfTopRates();

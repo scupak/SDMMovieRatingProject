@@ -33,7 +33,7 @@ namespace MovieRating.Core.ApplicationService
         int GetNumberOfRates(int movie, int rate);
 
         // 7. What is the id(s) of the movie(s) with the highest number of top rates (5)?
-        List<int> GetMoviesWithHighestNumberOfTopRates();
+        IEnumerable<int> GetMoviesWithHighestNumberOfTopRates();
 
         // 8. What reviewer(s) had done most reviews?
         List<int> GetMostProductiveReviewers();

@@ -136,7 +136,7 @@ namespace MovieRating.Core.ApplicationService.Impl
         }
 
         // 7. What is the id(s) of the movie(s) with the highest number of top rates (5)?
-        public List<int> GetMoviesWithHighestNumberOfTopRates()
+        public IEnumerable<int> GetMoviesWithHighestNumberOfTopRates()
         {
             var movie5 = RatingRepo.GetAll()
                 .Where(r => r.Grade == 5)
@@ -149,7 +149,7 @@ namespace MovieRating.Core.ApplicationService.Impl
 
             int max5 = movie5.Max(grp => grp.MovieGrade5);
 
-            return movie5.Where(grp => grp.MovieGrade5 == max5).Select(grp => grp.Movie).ToList();
+            return movie5.Where(grp => grp.MovieGrade5 == max5).Select(grp => grp.Movie);
         }
 
         // 8. What reviewer(s) had done most reviews?

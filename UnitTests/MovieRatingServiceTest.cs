@@ -367,7 +367,7 @@ namespace UnitTests
             };
 
             //act 
-            List<int> MoviesWithHighestNumberOfTopRates = mrs.GetMoviesWithHighestNumberOfTopRates();
+            List<int> MoviesWithHighestNumberOfTopRates = new List<int>(mrs.GetMoviesWithHighestNumberOfTopRates());
 
             Assert.Equal(MoviesWithHighestNumberOfTopRatesExpected, MoviesWithHighestNumberOfTopRates);
 

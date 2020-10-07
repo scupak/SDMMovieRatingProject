@@ -25,7 +25,8 @@ namespace MovieRating.Core.ApplicationService.Impl
         public double GetAverageRateFromReviewer(int reviewer)
         {
 
-            if (RatingRepo.GetAll().Count == 0)
+
+            if (RatingRepo.GetAll().Length == 0)
             {
                 throw new ArgumentException("List is empty");
 
@@ -89,7 +90,7 @@ namespace MovieRating.Core.ApplicationService.Impl
         // 5. On input N, what is the average rate the movie N had received?
         public double GetAverageRateOfMovie(int movie)
         {
-            if (RatingRepo.GetAll().Count == 0)
+            if (RatingRepo.GetAll().Length == 0)
             {
                 throw new ArgumentException("List is empty");
 
@@ -136,9 +137,9 @@ namespace MovieRating.Core.ApplicationService.Impl
         }
 
         // 7. What is the id(s) of the movie(s) with the highest number of top rates (5)?
-        public IEnumerable<int> GetMoviesWithHighestNumberOfTopRates()
+        public List<int> GetMoviesWithHighestNumberOfTopRates()
         {
-            var movie5 = RatingRepo.GetAll()
+            var movie5 = RatingRepo.GetAll().AsParallel()
                 .Where(r => r.Grade == 5)
                 .GroupBy(r => r.Movie)
                 .Select(group => new {
@@ -149,7 +150,7 @@ namespace MovieRating.Core.ApplicationService.Impl
 
             int max5 = movie5.Max(grp => grp.MovieGrade5);
 
-            return movie5.Where(grp => grp.MovieGrade5 == max5).Select(grp => grp.Movie);
+            return movie5.Where(grp => grp.MovieGrade5 == max5).Select(grp => grp.Movie).ToList();
         }
 
         // 8. What reviewer(s) had done most reviews?
@@ -172,7 +173,7 @@ namespace MovieRating.Core.ApplicationService.Impl
         public List<int> GetTopRatedMovies(int amount)
         {
 
-            return RatingRepo.GetAll()
+            return RatingRepo.GetAll().AsParallel()
                 .GroupBy(r => r.Movie)
                 .Select(grp => new
                 {

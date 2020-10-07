@@ -127,25 +127,102 @@ namespace UnitTestProjectPerformance
         public void GetMoviesWithHighestNumberOfTopRatesTest()
         {
             MovieRatingService movieRatingService = new MovieRatingService(repo);
-            IEnumerable<int> result = movieRatingService.GetMoviesWithHighestNumberOfTopRates();
+            List<int> result = movieRatingService.GetMoviesWithHighestNumberOfTopRates();
             //Console.WriteLine(result);
 
         }
 
+        // 8. What reviewer(s) had done most reviews?
+        [TestMethod]
+        [Timeout(4000)]
+        public void GetMostProductiveReviewersTest()
+        {
+            MovieRatingService movieRatingService = new MovieRatingService(repo);
+            List<int> result = movieRatingService.GetMostProductiveReviewers();
+
+            foreach (int reviewer in result)
+            {
+                Console.WriteLine(reviewer);
+
+
+            }
+
+            
+
+        }
+
+        // 9. On input N, what is top N of movies? The score of a movie is its average rate.
+        //List<int> GetTopRatedMovies(int amount);
+        [TestMethod]
+        [DataRow(10)]
+        [Timeout(4000)]
+        public void GetTopRatedMoviesTest(int amount)
+        {
+            MovieRatingService movieRatingService = new MovieRatingService(repo);
+            List<int> result = movieRatingService.GetTopRatedMovies(amount);
+
+            /*
+            foreach (int reviewer in result)
+            {
+                Console.WriteLine(reviewer);
+
+
+            }
+            */
+            
+
+        }
+
+        // 10. On input N, what are the movies that reviewer N has reviewed? The list should be sorted decreasing by rate first, and date secondly.
+        //List<int> GetTopMoviesByReviewer(int reviewer);
+        [TestMethod]
+        [DataRow(10)]
+        [Timeout(4000)]
+        public void GetTopMoviesByReviewerTest(int reviewer)
+        {
+            MovieRatingService movieRatingService = new MovieRatingService(repo);
+            List<int> result = movieRatingService.GetTopMoviesByReviewer(reviewer);
+
+            /*
+            foreach (int reviewer in result)
+            {
+                Console.WriteLine(reviewer);
+
+
+            }
+            */
+            
+
+        }
+
+        // 11. On input N, who are the reviewers that have reviewed movie N? The list should be sorted decreasing by rate first, and date secondly.
+       // List<int> GetReviewersByMovie(int movie);
+        [TestMethod]
+        [DataRow(10)]
+        [Timeout(4000)]
+        public void GetReviewersByMovieTest(int movie)
+        {
+            MovieRatingService movieRatingService = new MovieRatingService(repo);
+            List<int> result = movieRatingService.GetReviewersByMovie(movie);
+
+            /*
+            foreach (int reviewer in result)
+            {
+                Console.WriteLine(reviewer);
+
+
+            }
+            */
+            
+
+        }
 
         /*
 
-        // 7. What is the id(s) of the movie(s) with the highest number of top rates (5)?
-        List<int> GetMoviesWithHighestNumberOfTopRates();
+    
 
-        // 8. What reviewer(s) had done most reviews?
-        List<int> GetMostProductiveReviewers();
-
-        // 9. On input N, what is top N of movies? The score of a movie is its average rate.
-        List<int> GetTopRatedMovies(int amount);
-
-        // 10. On input N, what are the movies that reviewer N has reviewed? The list should be sorted decreasing by rate first, and date secondly.
-        List<int> GetTopMoviesByReviewer(int reviewer);
+    
+        
 
         // 11. On input N, who are the reviewers that have reviewed movie N? The list should be sorted decreasing by rate first, and date secondly.
         List<int> GetReviewersByMovie(int movie);

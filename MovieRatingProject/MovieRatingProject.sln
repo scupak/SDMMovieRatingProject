@@ -9,13 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfraStructure", "InfraStru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRating.Core", "..\MovieRating.Core\MovieRating.Core.csproj", "{77F59AF1-8448-4474-AA15-0E45F01C56BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "..\UnitTests\UnitTests.csproj", "{1465A6FD-C381-4EAE-B046-FE1F19889E30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTests", "..\UnitTests\XUnitTests.csproj", "{1465A6FD-C381-4EAE-B046-FE1F19889E30}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRating.Entity", "..\MovieRating.Entity\MovieRating.Entity.csproj", "{126A0163-E64D-473E-99F9-1F4FA1F2754A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonReaderProject", "JsonReaderProject\JsonReaderProject.csproj", "{2D176053-E2F7-43FF-BAC7-54DCC93E7FAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProjectPerformance", "UnitTestProjectPerformance\UnitTestProjectPerformance.csproj", "{95434F61-011B-4AF1-8818-C7A4A78AFF68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSUnitTestProjectPerformance", "UnitTestProjectPerformance\MSUnitTestProjectPerformance.csproj", "{95434F61-011B-4AF1-8818-C7A4A78AFF68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

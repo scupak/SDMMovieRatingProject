@@ -16,6 +16,6 @@ namespace MovieRating.Core.DomainService
             */
 
         //Returns a list containing all the objects in the repository.
-        List<T> GetAll();
+        T[] GetAll();
     }
 }

@@ -11,12 +11,12 @@ namespace JsonReaderProject
     {
        public string _fileName { get; set; }
 
-       public List<Rating> movieRatings { get; private set; }
+       public Rating[] movieRatings { get; private set; }
 
         public JsonFIleReader(string fileName)
         {
             _fileName = fileName;
-            movieRatings = ReadAllMovieRatings(fileName);
+            movieRatings = ReadAllMovieRatings(fileName).ToArray();
 
         }
 
@@ -48,7 +48,7 @@ namespace JsonReaderProject
         
         }
 
-        public List<Rating> GetAll()
+        public Rating[] GetAll()
         {
             return movieRatings;
         }

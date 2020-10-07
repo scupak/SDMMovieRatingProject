@@ -27,7 +27,7 @@ namespace UnitTests
             repoMock = new Mock<IRepository<Rating>>();
             repoMock.SetupAllProperties();
 
-            repoMock.Setup(x => x.GetAll()).Returns(() => dataStore);
+            repoMock.Setup(x => x.GetAll()).Returns(() => dataStore.ToArray());
         }
 
         //tests if the setup class works

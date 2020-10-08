@@ -23,8 +23,6 @@ namespace UnitTestProjectPerformance
         
         }
 
-
-
         // 1. On input N, what are the number of reviews from reviewer N?
         [TestMethod]
         [DataRow(1)]
@@ -128,7 +126,7 @@ namespace UnitTestProjectPerformance
         {
             MovieRatingService movieRatingService = new MovieRatingService(repo);
             List<int> result = movieRatingService.GetMoviesWithHighestNumberOfTopRates();
-            //Console.WriteLine(result);
+            Console.WriteLine(result);
 
         }
 
@@ -155,21 +153,15 @@ namespace UnitTestProjectPerformance
         //List<int> GetTopRatedMovies(int amount);
         [TestMethod]
         [DataRow(10)]
+        [DataRow(100)]
+        [DataRow(1000)]
+        [DataRow(10000)]
+        [DataRow(100000)]
         [Timeout(4000)]
         public void GetTopRatedMoviesTest(int amount)
         {
             MovieRatingService movieRatingService = new MovieRatingService(repo);
             List<int> result = movieRatingService.GetTopRatedMovies(amount);
-
-            /*
-            foreach (int reviewer in result)
-            {
-                Console.WriteLine(reviewer);
-
-
-            }
-            */
-            
 
         }
 
@@ -177,21 +169,12 @@ namespace UnitTestProjectPerformance
         //List<int> GetTopMoviesByReviewer(int reviewer);
         [TestMethod]
         [DataRow(10)]
+        [DataRow(571)]
         [Timeout(4000)]
         public void GetTopMoviesByReviewerTest(int reviewer)
         {
             MovieRatingService movieRatingService = new MovieRatingService(repo);
             List<int> result = movieRatingService.GetTopMoviesByReviewer(reviewer);
-
-            /*
-            foreach (int reviewer in result)
-            {
-                Console.WriteLine(reviewer);
-
-
-            }
-            */
-            
 
         }
 
@@ -205,27 +188,10 @@ namespace UnitTestProjectPerformance
             MovieRatingService movieRatingService = new MovieRatingService(repo);
             List<int> result = movieRatingService.GetReviewersByMovie(movie);
 
-            /*
-            foreach (int reviewer in result)
-            {
-                Console.WriteLine(reviewer);
-
-
-            }
-            */
-            
 
         }
 
-        /*
 
-    
 
-    
-        
-
-        // 11. On input N, who are the reviewers that have reviewed movie N? The list should be sorted decreasing by rate first, and date secondly.
-        List<int> GetReviewersByMovie(int movie);
-        */
     }
 }
